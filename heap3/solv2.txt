@@ -1,0 +1,1 @@
+di buffer sebanyak 35 karakter sembarang dengan dimana 4 karakter terakhir wajib dikasih pico karena sesuai source code nya agar bisa mencetak flag

